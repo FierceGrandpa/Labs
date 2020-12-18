@@ -7,20 +7,28 @@ namespace Lab3
     /// </summary>
     public abstract class Figure : IComparable<Figure>, IComparable, IPrint
     {
-        public virtual double Area { get; }
-
         /// <summary>
-        /// Метод для получения площади фигуры.
+        /// Площадь.
         /// </summary>
-        /// <returns>Площадь.</returns>
-        protected virtual double GetArea(Func<double> func) => func();
+        public virtual double Area { get; }
 
         /// <summary>
         /// Вывод информации о фигуре на консоль.
         /// </summary>
         public void Print() => Console.WriteLine(this.ToString());
 
-        public int CompareTo(Figure figure) => this.Area.CompareTo(figure.Area);
-        public int CompareTo(object obj)    => this.CompareTo(obj as Figure);
+        public int CompareTo(Figure figure)
+        {
+            return figure != null
+                ? this.Area.CompareTo(figure.Area)
+                : throw new Exception("Impossible to compare these objects!");
+        }
+
+        public int CompareTo(object obj)
+        {
+            return obj is Figure figure
+                ? Area.CompareTo(figure.Area)
+                : throw new Exception("Impossible to compare these objects!");
+        }
     }
 }

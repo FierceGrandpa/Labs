@@ -3,7 +3,7 @@
     /// <summary>
     /// Квадрат
     /// </summary>
-    public class Square : Rectangle, IPrint
+    public class Square : Rectangle
     {
         /// <summary>
         /// Геометрическая фигура Квадрат.
@@ -13,7 +13,7 @@
         
         public override string ToString()
         {
-            return $"Фигура: Квадрат\nДлинна стороны = {Width}\nПлощадь = {Area}";
+            return $"Квадрат: side = {Width}; s = {Area}";
         }
     }
 }

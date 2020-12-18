@@ -10,7 +10,7 @@ namespace Lab3.Figures
         /// <summary>
         /// Площадь.
         /// </summary>
-        public override double Area => base.GetArea(() => Width * Height);
+        public override double Area => Width * Height;
         /// <summary>
         /// Ширина.
         /// </summary>
@@ -42,7 +42,7 @@ namespace Lab3.Figures
 
         public override string ToString()
         {
-            return $"Фигура: Прямоугольник\nШирина = {Width}\nВысота = {Height}\nПлощадь = {Area}";
+            return $"Прямоугольник: w = {Width}; h = {Height}; s = {Area}";
         }
     }
 }

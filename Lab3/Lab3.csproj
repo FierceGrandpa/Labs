@@ -45,11 +45,16 @@
   <ItemGroup>
     <Compile Include="Figure.cs" />
     <Compile Include="Figures\Circle.cs" />
+    <Compile Include="Figures\NullFigure.cs" />
+    <Compile Include="Simple\SimpleList.cs" />
+    <Compile Include="Simple\SimpleListItem.cs" />
+    <Compile Include="Matrix3D.cs" />
     <Compile Include="Figures\Rectangle.cs" />
     <Compile Include="Figures\Square.cs" />
     <Compile Include="IPrint.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Simple\SimpleStack.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -60,5 +65,6 @@
       <Name>SimpleListProject</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

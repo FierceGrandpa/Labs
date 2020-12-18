@@ -5,12 +5,12 @@ namespace Lab3.Figures
     /// <summary>
     /// Круг
     /// </summary>
-    public class Circle : Figure, IPrint
+    public class Circle : Figure
     {
         /// <summary>
         /// Площадь.
         /// </summary>
-        public override double Area => base.GetArea(() => Math.PI * Radius * Radius);
+        public override double Area => Math.PI * Radius * Radius;
         /// <summary>
         /// Радиус.
         /// </summary>
@@ -32,7 +32,7 @@ namespace Lab3.Figures
         
         public override string ToString()
         {
-            return $"Фигура: Круг\nРадиус = {Radius}\nПлощадь = {Area}";
+            return $"Круг: r = {Radius}; s = {Area}";
         }
     }
 }

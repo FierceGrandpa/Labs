@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Lab3.Figures;
-using SimpleListProject;
+using Lab3.Simple;
 
 namespace Lab3
 {
@@ -14,47 +15,70 @@ namespace Lab3
             var circle    = new Circle(3);
             var square    = new Square(2);
 
+            Console.WriteLine("> ArrayList");
             var figuresArrayList = new ArrayList { rectangle, circle, square };
+            PrintCollection(figuresArrayList);
+
+            Console.WriteLine("> Sorted ArrayList");
             figuresArrayList.Sort();
+            PrintCollection(figuresArrayList);
 
-            for (var i = 0; i < figuresArrayList.Count; i++)
-            {
-                var figure = (Figure)figuresArrayList[i];
-                Console.Write($"{i + 1}) ");
-                figure.Print();
-            }
-
-            Console.WriteLine();
-
+            Console.WriteLine("> List");
             var figuresList = new List<Figure> { rectangle, circle, square };
+            PrintCollection(figuresList);
+
+            Console.WriteLine("> Sorted List");
             figuresList.Sort();
+            PrintCollection(figuresList);
 
-            for (var i = 0; i < figuresList.Count; i++)
+            Console.WriteLine("> Matrix3D");
+            var matrix = new Matrix3D<Figure>(3, 3, 3, new NullFigure())
             {
-                var figure = figuresList[i];
-                Console.Write($"{i + 1}) ");
-                figure.Print();
-            }
+                [0, 0, 0] = rectangle, 
+                [1, 1, 1] = square, 
+                [2, 2, 2] = circle
+            };
+            Console.WriteLine(matrix.ToString());
 
-            Console.WriteLine();
+            Console.WriteLine("> SimpleList");
+            var list = new SimpleList<Figure> { rectangle, circle, square };
+            PrintCollection(list);
 
-            var figuresSimpleStack = new SimpleStack<Figure>();
+            Console.WriteLine("> Sorted SimpleList");
+            list.Sort();
+            PrintCollection(list);
 
-            figuresSimpleStack.Push(rectangle);
-            figuresSimpleStack.Push(circle);
-            figuresSimpleStack.Push(square);
-
-            var currentIndex = 1;
-
-            while (figuresSimpleStack.Count > 0)
-            {
-                var figure = figuresSimpleStack.Pop();
-                Console.Write($"{currentIndex}) ");
-                figure.Print();
-                currentIndex++;
-            }
+            Console.WriteLine("> SimpleStack");
+            var stack = new SimpleStack<Figure>();
+            stack.Push(rectangle);
+            stack.Push(circle);
+            stack.Push(square);
+            PrintCollection(stack);
 
             Console.ReadLine();
+        }
+
+        private static void Print(IPrint printable) => printable?.Print();
+
+        private static void PrintCollection(IList figures)
+        {
+            for (var i = 0; i < figures.Count; i++)
+            {
+                var figure = (Figure)figures[i];
+                Console.Write($"{i + 1}) ");
+                Print(figure);
+            }
+            Console.WriteLine();
+        }
+        private static void PrintCollection(SimpleList<Figure> figures)
+        {
+            for (var i = 0; i < figures.Count; i++)
+            {
+                var figure = figures[i];
+                Console.Write($"{i + 1}) ");
+                Print(figure);
+            }
+            Console.WriteLine();
         }
     }
 }
